@@ -3,6 +3,7 @@ import pandas as pd
 import os
 import tkinter as tk
 from tkinter import filedialog
+from tkinter import messagebox
 import os
 import time
 
@@ -68,6 +69,7 @@ def transform_TRD():
 # Ask the user to select a single file name.
 def transform_CRM():
     increment = 0.005
+    show_message_box('C R M')
     dir_path_file = filedialog.askopenfilename(parent=application_window,
                                         initialdir=os.getcwd(),
                                         title="Please select the CPM-ACCOUNTS  file :",
@@ -114,6 +116,11 @@ def transform_CRM():
 
     return dataset
 
+def show_message_box(msg):
+    root = tk.Tk()
+    root.withdraw()  # Hide the root window
+    messagebox.showinfo("Load", f"Load {msg} file \nClick OK to continue")
+    root.destroy()
 
 
 def main():
